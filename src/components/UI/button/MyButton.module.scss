@@ -1,0 +1,20 @@
+.MyButton {
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #FE5F1E ;    
+    border-radius: 30px;
+    border: 1px;
+    padding: 10px;
+    transition: background 0.1s ease-in-out;
+    border: none;
+    b {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    }
+}
+.MyButton:hover{
+    background-color: #e94403;
+    opacity: 1;
+}

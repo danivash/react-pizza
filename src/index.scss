@@ -16,11 +16,16 @@ body {
 .wrapper {
   display: block;
   height: 100%;
-  // width: calc(100vw - 100px);
+  width: calc(100vw - 100px);
   background-color: #fff;
   margin: 50px auto ;
   border-radius: 10px;
   max-width: 1400px;
   padding: 40px 0;
+  .homeContent{
+    display: flex;
+    background-color: green; 
+  }
+
 }
 
