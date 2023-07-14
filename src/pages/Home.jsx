@@ -9,12 +9,7 @@ const Home = () => {
       <div style={{ display: "flex", flexWrap: "wrap", margin: "10px" }}>
         {pizzas.map((obj) => (
           <PizzaBlock
-            key={obj.id}
-            title={obj.title}
-            imgUrl={obj.imageUrl}
-            price={obj.price}
-            types={obj.types}
-            sizes={obj.sizes}
+            {...obj} //spread-оператор
           />
         ))}
       </div>
