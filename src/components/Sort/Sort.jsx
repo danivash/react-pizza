@@ -1,25 +1,27 @@
 import React, { useState } from "react";
-import classes from './Sort.module.scss'
+import classes from "./Sort.module.scss";
 const Sort = () => {
+  const [visible, setVisible] = useState(false);
 
-const [visible, setVisible] = useState(false)
+  // const rootClass = [classes.sortOptions]
+  // if(visible) {
+  //     rootClass.push(classes.sortOptionsActive)
+  // }
 
-const rootClass = [classes.sortOptions]
-if(visible) {
-    rootClass.push(classes.sortOptionsActive)
-}
-    
   return (
     <div className={classes.sort}>
-     <button onClick={() => setVisible(true)}>
-     <img src="image/Sort_vector.svg" alt="sort by" />
-      <span>Sort by: </span>
-     </button>
-      <ul className={rootClass.join(' ')}>
-        <li>hit</li>
-        <li>price</li>
-        <li>A-Z</li>
-      </ul>
+      <div className={classes.leftPart}>
+        <img src="image/Sort_vector.svg" alt="sort by" />
+        <b>Sort by: </b>
+        <span onClick={() => setVisible(!visible)}>popularity</span>
+      </div>
+      {visible && (
+          <ul className={classes.sortOptions}>
+            <li>popularity</li>
+            <li>price</li>
+            <li>A-Z</li>
+          </ul>
+      )}
     </div>
   );
 };
