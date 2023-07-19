@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Header.module.scss";
+import MyButton from "../UI/button/MyButton";
 
 const Header = () => {
   return (
@@ -12,14 +13,15 @@ const Header = () => {
           <p>The best pizza in the universe</p>
         </div>
       </div>
-        <button  >
+        {/* <button  >
         <a href="#basket" >
 
           <b>55 $</b>
             <b>|</b>   
           <b> 2</b>
           </a>
-        </button>
+        </button> */}
+        <MyButton content={'add'}/>
     </div>
     <hr />
    </>
