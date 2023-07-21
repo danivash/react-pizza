@@ -10,7 +10,7 @@ const Sort = () => {
   // }
     const openAndChooseSort = (index) => {
       setChoseSortIndex(index);
-      // setVisible(!visible); 
+      setVisible(!visible); 
     }
 
   return (

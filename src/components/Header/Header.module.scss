@@ -2,27 +2,35 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 15px 25px 20px;
+    padding: 20px 15px 25px 23px;
     margin-left: 77px;
     margin-right: 38px;
-    .left_header {
-        display: flex;
-        align-items: center;
-        line-height: 0.6;
-        img {
-            height: 38px;
-            width: 38px;
-            margin-right: 15px;
-        }
-
-        h1{
-            font-size: 24px;
-            font-weight: 700;
-        }
-        p {
-            color: #7B7B7B;
+    a{  
+        text-decoration: none;
+        color: inherit; // удаление синего цвета из ссылки
+        .left_header {
+            display: flex;
+            align-items: center;
+            line-height: 0.6;
+    
+    
+            img {
+                height: 38px;
+                width: 38px;
+                margin-right: 15px;
+            }
+    
+            h1{
+                font-size: 24px;
+                font-weight: 700;
+            }
+            p {
+                color: #7B7B7B;
+            }
         }
     }
+
+    
     button {
         width: 150px;
         height: 50px;

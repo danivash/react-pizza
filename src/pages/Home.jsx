@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import LoadingItem from "../components/LoadingItem/LoadingItem";
+import Categories from "../components/Categories/Categories";
 // import pizzas from '../assets/dataPizzas.json';
-
+import classes from '../components/PizzaBlock/PizzaBlock.module.scss'
 
 const Home = ({pizzaItems, isLoading}) => {
 
@@ -20,17 +21,17 @@ const Home = ({pizzaItems, isLoading}) => {
 
   console.log(pizzaItems);
   return (
-    <>
-      
+    <div className={classes.contentd}>
+      <Categories/>
 
-      <h1 style={{ marginLeft: "64px" }}>All pizzas</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", margin: "10px" }}>
+      <h1 style={{ marginLeft: "100px" }}>All pizzas</h1>
+      <div  className={classes.home}>
     
       {renderItems()}
     
         
       </div>
-    </>
+    </div>
   );
 };
 
