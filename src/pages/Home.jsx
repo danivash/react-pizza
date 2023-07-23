@@ -21,10 +21,10 @@ const Home = ({pizzaItems, isLoading}) => {
 
   console.log(pizzaItems);
   return (
-    <div className={classes.contentd}>
+    <div className={classes.wrapper}>
       <Categories/>
 
-      <h1 style={{ marginLeft: "100px" }}>All pizzas</h1>
+      <h1 style={{ marginLeft: "25px" }}>All pizzas</h1>
       <div  className={classes.home}>
     
       {renderItems()}

@@ -1,10 +1,17 @@
 .header {
     display: flex;
     align-items: center;
+    position: sticky; //фиксируем шапку
+    top: 0; 
+    background-color: #fff;
+    z-index: 3;
+    
     justify-content: space-between;
-    padding: 20px 15px 25px 23px;
-    margin-left: 77px;
-    margin-right: 38px;
+    border-radius: 10px;
+    padding: 20px 15px 0px 23px;
+    
+    // margin-left: 77px;
+    // margin-right: 38px;
     a{  
         text-decoration: none;
         color: inherit; // удаление синего цвета из ссылки
@@ -27,33 +34,63 @@
             p {
                 color: #7B7B7B;
             }
+
+            @media (max-width: 550px) {
+                img {
+                    width: 30px;
+                    height: auto;
+                }
+                div {
+         
+                    h1 {
+                        font-size: 21px;
+                    }
+                    p {
+                    font-size: 13px;
+                    }
+                }
+            } 
+
         }
     }
 
     
-    button {
-        width: 150px;
-        height: 50px;
-        cursor: pointer;
-        background-color: #FE5F1E ;    
-        border-radius: 30px;
-        padding: 10px;
-        text-decoration: none;
-        opacity: 0.8;
-        transition: background 0.1s ease-in-out;
-        border: none;
-       b {
-        color: #fff;
-        font-size: 16px;
-        font-weight: 500;
-        }
-    }
-    button:hover{
-        background-color: #e94403;
-        opacity: 1;
-    }
+    // button {
+    //     width: 150px;
+    //     height: 50px;
+    //     cursor: pointer;
+    //     background-color: #FE5F1E ;    
+    //     border-radius: 30px;
+    //     padding: 10px;
+    //     text-decoration: none;
+    //     opacity: 0.8;
+    //     transition: background 0.1s ease-in-out;
+    //     border: none;
+    //    b {
+    //     color: #fff;
+    //     font-size: 16px;
+    //     font-weight: 500;
+    //     }
+    // }
+    // button:hover{
+    //     background-color: #e94403;
+    //     opacity: 1;
+    // }
 
-        
+@media (max-width: 550px) {
+    // background-color: gold;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+     
+@media (max-width: 445px) {
+    // background-color: gold;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 18px;
+}   
     
 }
 hr {

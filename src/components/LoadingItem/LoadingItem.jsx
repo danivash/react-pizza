@@ -1,10 +1,10 @@
 import React from 'react'
 import { Skeleton } from "@mui/material";
-
+import classes from "./Loading.module.scss"
 
 const LoadingItem = () => {
   return (
-    <div
+    <div  className={classes.wrapper}
         style={{
           display: "inline-flex",
           flexDirection: "column",

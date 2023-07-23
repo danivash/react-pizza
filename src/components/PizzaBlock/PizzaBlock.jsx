@@ -41,7 +41,7 @@ const PizzaBlock = ({title, imageUrl, price, sizes, types, isLoading=true}) => {
             </div>
             <div className={classes.footer}>
               <span>from {price}$</span>
-              <MyButton className={classes.MyButton} content={"add"} />
+              <MyButton  content={"add"} />
             </div>
           </div>
         )}
