@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import classes from "./Categories.module.scss"
 import Sort from '../Sort/Sort'
 
-const Categories = () => {
+const Categories = ({currentCategory, onClickCategory, chosenSort, onClickSort}) => {
 
-  const [active, setActive] = useState(0);
   const categories = [
   'All',  
   'Meat',
@@ -19,15 +18,15 @@ const Categories = () => {
       <ul>
         {categories.map((category, index) => (
           <li
-            onClick={() => setActive(index)}
+            onClick={() => onClickCategory(index)}
             key={index}
-            className={active === index ? classes.active : ""}
+            className={currentCategory === index ? classes.active : ""}
           >
             {category}
           </li>
         ))}
       </ul>
-      <Sort />
+      <Sort chosenSort={chosenSort} onClickSort={onClickSort}/>
     </div>
   );
 }

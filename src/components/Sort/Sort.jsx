@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import classes from "./Sort.module.scss";
-const Sort = () => {
+const Sort = ({ chosenSort, onClickSort }) => {
+
   const [visible, setVisible] = useState(false);
-  const [choseSortIndex, setChoseSortIndex] = useState(0);
-  const listSortBy = ['popularity', 'price', 'A-Z'];
-  // const rootClass = [classes.sortOptions]
-  // if(visible) {
-  //     rootClass.push(classes.sortOptionsActive)
-  // }
-    const openAndChooseSort = (index) => {
-      setChoseSortIndex(index);
-      setVisible(!visible); 
-    }
+  // const [choseSortIndex, setChoseSortIndex] = useState(0);
+  const listSortBy = [
+    { sort: "popularity", index: 0 },
+    { sort: "price", index: 1 },
+    { sort: "A-Z", index: 2 } 
+  ];
+  const openAndChooseSort = (obj) => {
+    onClickSort(obj);
+    setVisible(!visible);
+  };
 
   return (
     <div className={classes.sort}>
@@ -23,14 +24,14 @@ const Sort = () => {
         />
         <b>Sort by: </b>
         <span onClick={() => setVisible(!visible)}>
-          {listSortBy[choseSortIndex]}
+          {listSortBy[chosenSort.index].sort}
         </span>
       </div>
       {visible && (
         <ul className={classes.sortOptions}>
-          {listSortBy.map((sort, index) => (
-            <li key={index} onClick={() => openAndChooseSort(index)}>
-              {sort}
+          {listSortBy.map((sortObj, index) => (
+            <li key={index} onClick={() => openAndChooseSort(sortObj)}>
+              {sortObj.sort}
             </li>
           ))}
         </ul>

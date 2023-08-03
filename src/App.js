@@ -6,27 +6,11 @@ import "./index.scss";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound";
+import Basket from "./pages/Basket/Basket";
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const getData = () => {
-    fetch("https://64b6bf8cdf0839c97e16113b.mockapi.io/items")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setItems(data);
-        setIsLoading(false);
-      });
-  };
-  useEffect(() => {
-    setIsLoading(true);
-    // request -- getting data of pizza for render
-    getData();
-  }, []);
 
-  console.log(items);
+  // console.log(items);
 
   return (
     <div className="wrapper">
@@ -36,9 +20,15 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home pizzaItems={items} isLoading={isLoading} />}
+          element={<Home />}
         />
-        <Route path="*" element={<NotFound/>} />
+        <Route
+          path="basket"
+          // element={<Basket items={items}/>}
+          element={<Basket />}
+
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

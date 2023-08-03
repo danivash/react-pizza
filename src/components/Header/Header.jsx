@@ -16,8 +16,9 @@ const Header = () => {
             </div>
           </div>
         </Link>
-
-        <MyButton content={"add"} />
+        <Link to="basket">
+          <MyButton content={"add"} />
+        </Link>
       </div>
       <hr />
     </>
