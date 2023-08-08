@@ -5,9 +5,9 @@ const Sort = ({ chosenSort, onClickSort }) => {
   const [visible, setVisible] = useState(false);
   // const [choseSortIndex, setChoseSortIndex] = useState(0);
   const listSortBy = [
-    { sort: "popularity", index: 0 },
-    { sort: "price", index: 1 },
-    { sort: "A-Z", index: 2 } 
+    { sortRender: "popularity",  sortBy: "rating", index: 0},
+    { sortRender: "price",  sortBy: "price", index: 1},
+    { sortRender: "A-Z",  sortBy: "title", index: 2 } 
   ];
   const openAndChooseSort = (obj) => {
     onClickSort(obj);
@@ -24,14 +24,14 @@ const Sort = ({ chosenSort, onClickSort }) => {
         />
         <b>Sort by: </b>
         <span onClick={() => setVisible(!visible)}>
-          {listSortBy[chosenSort.index].sort}
+          {listSortBy[chosenSort.index].sortRender}
         </span>
       </div>
       {visible && (
         <ul className={classes.sortOptions}>
           {listSortBy.map((sortObj, index) => (
             <li key={index} onClick={() => openAndChooseSort(sortObj)}>
-              {sortObj.sort}
+              {sortObj.sortRender}
             </li>
           ))}
         </ul>
