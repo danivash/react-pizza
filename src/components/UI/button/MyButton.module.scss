@@ -17,8 +17,8 @@
         width: 90px;
         height: auto;
     }
-}
-.MyButton:hover{
-    background-color: #e94403;
-    opacity: 1;
+    &:hover{
+        background-color: #e94403;
+        opacity: 1;
+    }
 }

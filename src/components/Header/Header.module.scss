@@ -14,11 +14,11 @@
     a{  
         text-decoration: none;
         color: inherit; // удаление синего цвета из ссылки
+        
         .left_header {
             display: flex;
             align-items: center;
             line-height: 0.6;
-    
     
             img {
                 height: 38px;
@@ -29,11 +29,28 @@
             h1{
                 font-size: 24px;
                 font-weight: 700;
+                line-height: 0.5;
+
             }
             p {
                 color: #7B7B7B;
-            }
+                line-height: 0.5;
 
+            }
+            @media (max-width:825px) {
+                div {
+         
+                    h1 {
+                        line-height: 1;
+                        margin-bottom: 5px;
+
+                    }
+                    p {
+                        margin-top: 0;
+                        line-height: 1;
+                    }
+                }
+            }
             @media (max-width: 550px) {
                 img {
                     width: 30px;

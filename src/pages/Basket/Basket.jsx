@@ -2,9 +2,10 @@ import React from "react";
 import MyButton from "../../components/UI/button/MyButton";
 import classes from "./Basket.module.scss";
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
+import { Link } from "react-router-dom";
 
 const Basket = ({ items }) => {
-  // console.log(items[1].title, 'item');
+  console.log(items);
   return (
     <div className={classes.wrapper}>
       <div className={classes.basket_header}>
@@ -36,7 +37,7 @@ const Basket = ({ items }) => {
             <button className={classes.button_for_count}>
               <b>-</b>
             </button>
-            <b style={{'marginTop': '20px'}}>count</b>
+            <b style={{ marginTop: "20px" }}>count</b>
             <button className={classes.button_for_count}>
               <b>+</b>
             </button>
@@ -56,7 +57,9 @@ const Basket = ({ items }) => {
         </h3>
       </div>
       <div className={classes.footer__buttons}>
-        <MyButton content={"Go back"} />
+        <Link to="/">
+          <MyButton content={"Go back"} />
+        </Link>
         <MyButton content={"Pay now"} />
       </div>
     </div>

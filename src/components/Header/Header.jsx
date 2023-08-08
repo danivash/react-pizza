@@ -2,8 +2,9 @@ import React from "react";
 import classes from "./Header.module.scss";
 import MyButton from "../UI/button/MyButton";
 import { Link } from "react-router-dom";
+import MyInput from "../UI/input/MyInput";
 
-const Header = () => {
+const Header = ({searchValue, setSearchValue}) => {
   return (
     <>
       <div className={classes.header}>
@@ -16,6 +17,7 @@ const Header = () => {
             </div>
           </div>
         </Link>
+        <MyInput searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Link to="basket">
           <MyButton content={"add"} />
         </Link>

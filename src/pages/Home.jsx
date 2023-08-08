@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import LoadingItem from "../components/LoadingItem/LoadingItem";
 import Categories from "../components/Categories/Categories";
@@ -6,52 +6,32 @@ import Categories from "../components/Categories/Categories";
 import classes from "../components/PizzaBlock/PizzaBlock.module.scss";
 import Sort from "../components/Sort/Sort";
 
-const Home = () => {
+const Home = ({searchValue, setSearchValue}) => {
+
   const renderItems = () => {
-    return (isLoading ? [...Array(10)] : items).map((obj, index) => (
+    const skeletons = [...Array(10)].map((obj, index) => (
       <PizzaBlock
         key={index}
         {...obj} //spread-оператор
         isLoading={isLoading}
       />
     ));
+    const pizzas = items.filter((obj) => obj.title.toLowerCase().includes(searchValue.toLowerCase())).map((obj, index) => (
+      <PizzaBlock
+        key={index}
+        {...obj} //spread-оператор
+        isLoading={isLoading}
+      />
+    ));
+    return (isLoading ? skeletons : pizzas);
   };
+
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [sortedType, setSortedType] = useState({sort: "popularity", index: 0 });
-  const getDataForChosenCategory = (category) => {
-    setIsLoading(true);
-    fetch(
-      // `https://64b6bf8cdf0839c97e16113b.mockapi.io/items?${category > 0 ? `category=${category}` : ''}` 
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setItems(data);
-        // console.log(data);
-        setIsLoading(false);
-      });
-    console.log("categories data reload");
-  };
 
-  // const callback = (category) => {
-  //   setSelectedCategory(category)
-  // }
-
-  // const getData = () => {
-  //   setIsLoading(true);
-  //   fetch(`https://64b6bf8cdf0839c97e16113b.mockapi.io/items?${category > 0 ? `category=${category}` : ''}`)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setItems(data);
-  //       setIsLoading(false);
-  //     });
-  //   console.log("all data reload");
-  // };
   useEffect(() => {
     setIsLoading(true);
     // request -- getting data of pizza for render
@@ -66,6 +46,9 @@ const Home = () => {
       setIsLoading(false);
     });
     window.scrollTo(0, 0); //
+ 
+
+
   }, [selectedCategory, sortedType]);
  
   return (
@@ -81,6 +64,8 @@ const Home = () => {
       {/* </div> */}
 
       <h1 style={{ marginLeft: "105px" }}> All pizzas</h1>
+
+      
       <div className={classes.home}>{renderItems()}</div>
     </div>
   );
