@@ -1,6 +1,8 @@
-import React from "react";
-import classes from "./MyInput.module.scss";
-const MyInput = ({searchValue, setSearchValue}) => {
+import React, { useContext } from "react";
+import classes from "./Search.module.scss";
+import { SearchContext } from "../../App";
+const Search = () => {
+  const {searchValue, setSearchValue} = useContext(SearchContext);  
   return (
     <div className={classes.root}>
       <svg 
@@ -17,4 +19,4 @@ const MyInput = ({searchValue, setSearchValue}) => {
   );
 };
 
-export default MyInput;
+export default Search;

@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import LoadingItem from "../components/LoadingItem/LoadingItem";
 import Categories from "../components/Categories/Categories";
 import classes from "../components/PizzaBlock/PizzaBlock.module.scss";
 import Sort from "../components/Sort/Sort";
 import { Pagination } from "@mui/material";
+import { SearchContext } from "../App";
 
-const Home = ({ searchValue, setSearchValue }) => {
+const Home = () => {
+  const {searchValue} = useContext(SearchContext)
   const renderItems = () => {
     const skeletons = [...Array(10)].map((obj, index) => (
       <PizzaBlock
@@ -34,7 +36,6 @@ const Home = ({ searchValue, setSearchValue }) => {
     index: 0,
   });
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
   useEffect(() => {
     setIsLoading(true);
     const category = selectedCategory > 0 ? `category=${selectedCategory}` : "";
@@ -70,7 +71,6 @@ const Home = ({ searchValue, setSearchValue }) => {
       <div className={classes.home}>{renderItems()}</div>
       <div style={{ display: "flex", justifyContent: "center", padding: 30 }}>
         <Pagination count={3} onChange={(event, number) => (setCurrentPage(number))} page={currentPage} color="primary" size="large"/>
-        {console.log(Pagination.count)}
       </div>
     </div>
   );

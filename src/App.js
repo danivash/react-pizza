@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Categories from "./components/Categories/Categories";
 import Header from "./components/Header/Header";
 import PizzaBlock from "./components/PizzaBlock/PizzaBlock";
@@ -7,29 +7,35 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Basket from "./pages/Basket/Basket";
+import pizzaForBasket from './assets/dataPizzas.json' // temporary
 
-import pizzaForBAsket from './assets/dataPizzas.json' // temporary
+
+
+export const SearchContext = createContext(null);
+
 function App() {
 
   const [searchValue, setSearchValue] = useState('');
   
   return (
     <div className="wrapper">
-      <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
-
+    <SearchContext.Provider value={{searchValue, setSearchValue}}>
+      <Header />
       <Routes>
         <Route
           path="/"
-          element={<Home searchValue={searchValue} setSearchValue={setSearchValue}/>}
+          element={<Home />}
         />
         <Route
           path="basket"
           // element={<Basket items={items}/>}
-          element={<Basket items={pizzaForBAsket}/>} // items also temporary
+          element={<Basket items={pizzaForBasket}/>} // items also temporary
 
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+    </SearchContext.Provider>
+
     </div>
   );
 }

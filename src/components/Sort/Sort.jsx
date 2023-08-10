@@ -18,7 +18,7 @@ const Sort = ({ chosenSort, onClickSort }) => {
     <div className={classes.sort}>
       <div className={classes.leftPart}>
         <img
-          className={visible && classes.rotate}
+          className={visible ? classes.rotate : ''}
           src="image/Sort_vector.svg"
           alt="sort by"
         />
