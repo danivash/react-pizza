@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import classes from "./Sort.module.scss";
-const Sort = ({ chosenSort, onClickSort }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { ChangeSort } from "../../redux/filteredSlice";
 
+
+
+const listSortBy = [
+  { sortRender: "popularity",  sortBy: "rating", index: 0},
+  { sortRender: "price",  sortBy: "price", index: 1},
+  { sortRender: "A-Z",  sortBy: "title", index: 2 } 
+];
+
+
+const Sort = () => {
+
+  const sort = useSelector(state => state.filter.sort)
+  const dispatch = useDispatch(null)
   const [visible, setVisible] = useState(false);
-  // const [choseSortIndex, setChoseSortIndex] = useState(0);
-  const listSortBy = [
-    { sortRender: "popularity",  sortBy: "rating", index: 0},
-    { sortRender: "price",  sortBy: "price", index: 1},
-    { sortRender: "A-Z",  sortBy: "title", index: 2 } 
-  ];
+
   const openAndChooseSort = (obj) => {
-    onClickSort(obj);
+    dispatch(ChangeSort(obj));  
     setVisible(!visible);
   };
 
@@ -24,7 +33,7 @@ const Sort = ({ chosenSort, onClickSort }) => {
         />
         <b>Sort by: </b>
         <span onClick={() => setVisible(!visible)}>
-          {listSortBy[chosenSort.index].sortRender}
+          {listSortBy[sort.index].sortRender}
         </span>
       </div>
       {visible && (

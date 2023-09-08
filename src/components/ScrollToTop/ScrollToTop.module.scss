@@ -1,0 +1,35 @@
+.scrollToTop {
+    position: absolute; 
+    height: auto;
+    width: 50px;
+    border-radius: 20px;
+    @media (max-height: 1500px) {
+        left: -120px;
+    }
+    @media (max-width: 850px) {
+        left: -15px;
+    }
+    @media (max-height: 920px) {
+        left: -5px;
+    }
+
+}
+
+.scrollAdaptive {
+    position: sticky;
+    @media (max-height: 1500px) {
+        top: 700px;
+    }
+    @media (max-width: 850px) {
+        top: 950px;
+    }
+    @media (max-width: 800px) {
+        top: 870px;
+    }
+    @media (max-height: 920px) {
+        top: 750px;
+    }
+    @media (max-height: 730px) {
+        top: 570px;
+    }
+}

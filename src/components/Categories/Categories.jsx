@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
-import classes from "./Categories.module.scss"
-import Sort from '../Sort/Sort'
+import React, { useState } from "react";
+import classes from "./Categories.module.scss";
+import Sort from "../Sort/Sort";
+import { useDispatch, useSelector } from "react-redux";
+import { ChangeCategory } from "../../redux/filteredSlice";
 
-const Categories = ({currentCategory, onClickCategory, chosenSort, onClickSort}) => {
-
-  const categories = [
-  'All',  
-  'Meat',
-  'Vegetarian',
-  'Grill',
-  'Spicy',
-  'Closed'
-  ]
+const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
+const Categories = ({ chosenSort, onClickSort }) => {
+  const category = useSelector((state) => state.filter.category);
+  const dispatch = useDispatch(null);
 
   return (
     <div className={classes.categories}>
       <ul>
-        {categories.map((category, index) => (
+        {categories.map((choseCategory, index) => (
           <li
-            onClick={() => onClickCategory(index)}
+            onClick={() => dispatch(ChangeCategory(index))}
             key={index}
-            className={currentCategory === index ? classes.active : ""}
+            className={category === index ? classes.active : ""}
           >
-            {category}
+            {choseCategory}
           </li>
         ))}
       </ul>
-      <Sort chosenSort={chosenSort} onClickSort={onClickSort}/>
+      <Sort />
     </div>
   );
-}
+};
 
-export default Categories
+export default Categories;

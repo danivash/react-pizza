@@ -6,9 +6,11 @@ import classes from "../components/PizzaBlock/PizzaBlock.module.scss";
 import Sort from "../components/Sort/Sort";
 import { Pagination } from "@mui/material";
 import { SearchContext } from "../App";
+import { useSelector } from "react-redux";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const Home = () => {
-  const {searchValue} = useContext(SearchContext)
+  const { searchValue } = useContext(SearchContext);
   const renderItems = () => {
     const skeletons = [...Array(10)].map((obj, index) => (
       <PizzaBlock
@@ -27,14 +29,11 @@ const Home = () => {
     return isLoading ? skeletons : pizzas;
   };
 
+  const selectedCategory = useSelector((state) => state.filter.category);
+  const sortedType = useSelector((state) => state.filter.sort);
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(0);
-  const [sortedType, setSortedType] = useState({
-    sortRender: "popularity",
-    sortBy: "rating",
-    index: 0,
-  });
   const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
     setIsLoading(true);
@@ -56,21 +55,21 @@ const Home = () => {
 
   return (
     <div className={classes.wrapper}>
-      {/* <div style={{display: "flex"}}> */}
-      <Categories
-        currentCategory={selectedCategory}
-        onClickCategory={(index) => setSelectedCategory(index)}
-        chosenSort={sortedType}
-        onClickSort={(index) => setSortedType(index)}
-      />
-      {/* <Sort/> */}
-      {/* </div> */}
+      <Categories />
+      <ScrollToTop />
 
+      {/* finish render current title of category */}
       <h1 style={{ marginLeft: "105px" }}> All pizzas</h1>
 
       <div className={classes.home}>{renderItems()}</div>
       <div style={{ display: "flex", justifyContent: "center", padding: 30 }}>
-        <Pagination count={3} onChange={(event, number) => (setCurrentPage(number))} page={currentPage} color="primary" size="large"/>
+        <Pagination
+          count={3}
+          onChange={(event, number) => setCurrentPage(number)}
+          page={currentPage}
+          color="primary"
+          size="large"
+        />
       </div>
     </div>
   );

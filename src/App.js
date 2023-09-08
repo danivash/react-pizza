@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Basket from "./pages/Basket/Basket";
 import pizzaForBasket from './assets/dataPizzas.json' // temporary
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 
@@ -17,8 +19,12 @@ function App() {
 
   const [searchValue, setSearchValue] = useState('');
   
+  
+
   return (
     <div className="wrapper">
+    
+    
     <SearchContext.Provider value={{searchValue, setSearchValue}}>
       <Header />
       <Routes>
